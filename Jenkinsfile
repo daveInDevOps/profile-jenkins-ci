@@ -27,31 +27,31 @@ pipeline {
                sh 'mvn -s settings.xml clean install -DskipTests' 
             }
 
-            // post {
-            //     success {
-            //         echo "Now Archiving"
-            //         archiveArtifacts artifacts: '**/*.war'
-            //     }
-            // }
+            post {
+                success {
+                    echo "Now Archiving"
+                    archiveArtifacts artifacts: '**/*.war'
+                }
+            }
         }
 
-        // stage('test'){
-        //     steps {
-        //         sh 'mvn -s settings.xml test'
-        //     }
-        // }
+        stage('test'){
+            steps {
+                sh 'mvn -s settings.xml test'
+            }
+        }
 
-        // stage('Checkstyle Analysis'){
-        //     steps {
-        //         sh 'mvn  -s settings.xml checkstyle:checkstyle'
-        //     }
+        stage('Checkstyle Analysis'){
+            steps {
+                sh 'mvn  -s settings.xml checkstyle:checkstyle'
+            }
 
-        //     post {
-        //         success {
-        //             echo 'Generated Analysis Result'
-        //         }
-        //     }
-        // }
+            post {
+                success {
+                    echo 'Generated Analysis Result'
+                }
+            }
+        }
 
 
         // stage('CODE ANALYSIS with SONARQUBE') {
