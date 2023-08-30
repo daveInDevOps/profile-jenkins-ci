@@ -1,2 +1,2 @@
 # profile-jenkins-ci
-This is a demo project showing CI pipline with jenkins,nexus
+This is a demo project showing CI pipline with jenkins,nexus,sonarqube
