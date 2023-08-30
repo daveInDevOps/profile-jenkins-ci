@@ -101,7 +101,7 @@ pipeline {
                          type: 'war'
                         ]
                     ]
-                )
+                );
             }
         } 
     }
