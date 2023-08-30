@@ -17,6 +17,7 @@ pipeline {
         NEXUS_LOGIN = 'nexuslogin'
         SONARSERVER = 'sonarserver'
         SONARSCANNER = 'sonarscanner'
+        ARTVERSION = "${env.BUILD_ID}"
 
 
     }
@@ -86,22 +87,24 @@ pipeline {
 
         stage("Upload Artifact") {
             steps {
-                nexusArtifactUploader(
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
-                    groupId: 'QA',
-                    version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
-                    repository: "${RELEASE_REPO}",
-                    credentialsId: "${NEXUS_LOGIN}"
-                    artifacts: [
-                        [artifactId: 'vproapp',
-                         classifier: '',
-                         file: 'target/vprofile-v2.war',
-                         type: 'war'
+                script {
+                    nexusArtifactUploader(
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
+                        groupId: 'QA',
+                        version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+                        repository: "${RELEASE_REPO}",
+                        credentialsId: "${NEXUS_LOGIN}"
+                        artifacts: [
+                            [artifactId: 'vproapp',
+                            classifier: '',
+                            file: 'target/vprofile-v2.war',
+                            type: 'war'
+                            ]
                         ]
-                    ]
-                );
+                    );
+                }
             }
         } 
     }
