@@ -24,8 +24,13 @@
 - Unit tests will be run.If any failure the notification will be sent to Slack
 - If it passes code analysis will be done using Checkstyle and Sonarqube Scanner
 - It will generate a report,which we're going to publish on Sonarqube server
-- We have Quality Gates.If it passes we will go the next level.
-- If not notification will be sent to Slack and the process will be stopped
-- Build process will start with Maven (java code)
+- We have Quality Gates.If it passes we will go the next level.If failure > Slack notification
+- Build process will start with Maven (java code).If failure > Slack notification
+- Maven dependencies we have gone store in Nexus repository
+- Once we have artifact we're going to upload a new version back to Nexus server
+
+
+
+
 
 
