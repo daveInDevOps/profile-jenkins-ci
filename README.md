@@ -11,17 +11,17 @@
 - Git as version control system
 - Maven as build tool
 - Checkstyle as code analysis tool
-- Sonatype Nexus as artifact/software repo 
+- Sonatype Nexus as artifact/software repository 
 - Sonarqube as code analysis server
 - AWS EC2 servers for server setup
-- Slack for notification
+- Slack for notifications
 
  
 > Flow of execution
 
 - Developer makes a commit to SCM (GitHub)
 - Jenkins server will automatically fetch the code
-- Unit tests will be run.If any failure the notification will be sent to Slack
+- Unit tests will be run.If any failure > Slack notification
 - If it passes code analysis will be done using Checkstyle and Sonarqube Scanner
 - It will generate a report,which we're going to publish on Sonarqube server
 - We have Quality Gates.If it passes we will go the next level.If failure > Slack notification
@@ -30,7 +30,15 @@
 - Once we have artifact we're going to upload a new version back to Nexus server
 
 
+> Provisioning
 
+- Project source code > src/main
+- Unit tests > src
+- Jenkins Pipelines > Jenkinsfile
+- Jenkins setup > userdata/jenkins-setup.sh
+- Nexus setup > userdata/nexus-setup.sh
+- Sonar > userdata/sonar-analysis-properties
+- Sonar setup > userdata/sonar-setup.sh
 
 
 
