@@ -33,7 +33,7 @@
 > Provisioning
 
 - Project source code > src/main
-- Unit tests > src
+- Unit tests > src/tests
 - Jenkins Pipelines > Jenkinsfile
 - Jenkins setup > userdata/jenkins-setup.sh
 - Nexus setup > userdata/nexus-setup.sh
